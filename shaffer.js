@@ -123,12 +123,11 @@ function setFilter(f) {
 }
 
  // Reset to default image and filter
-function reset() {
-  imageURL = "./h49_2.png";
-  var bias = -0.07;
-  imageFilter = shaffer(-0.07); //grayscale;
-  biasInputText.value = bias;
-  biasInputRange.value = bias;
+function reset(imageFile = "./h49_2.png", bias = -0.07) {
+  imageURL = imageFile;
+  imageFilter = shaffer(bias); //grayscale;
+  input_bias.value = bias;
+  // biasInputRange.value = bias;
   document.querySelector("#filename").innerHTML = "";
   update();
 }
