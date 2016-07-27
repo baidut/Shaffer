@@ -1,0 +1,6 @@
+{
+  "name": "Shaffer",
+  "tagline": "SHAdow-Free Feature ExtractoR",
+  "body": "### Overview\r\n\r\nCode for the ACM MM2016 paper \"A Novel Shadow-Free Feature Extractor for Real-Time Road Detection\" ( ieeexplore paper html pdf )\r\n\r\nThis project is part of [OpenVehicleVision](https://github.com/baidut/OpenVehicleVision/).",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
