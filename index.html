@@ -8,8 +8,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script type="text/javascript" src="shaffer.js"></script>
   </head>
-  <body>
+  <body onload="onLoad();">
     <section class="page-header">
       <h1 class="project-name">Shaffer</h1>
       <h2 class="project-tagline">SHAdow-Free Feature ExtractoR</h2>
@@ -22,9 +23,49 @@
       <h3>
 <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h3>
 
-<p>Code for the ACM MM2016 paper "A Novel Shadow-Free Feature Extractor for Real-Time Road Detection" ( ieeexplore paper html pdf )</p>
+<p>Code for ACM MM2016 paper "A Novel Shadow-Free Feature Extractor for Real-Time Road Detection" ( <a>ieeexplore</a> <a>paper</a> <a>html</a> <a>pdf</a> )</p>
 
 <p>This project is part of <a href="https://github.com/baidut/OpenVehicleVision/">OpenVehicleVision</a>.</p>
+
+
+<!-- Example -->
+<p>Shaffer takes a color image as input and outputs a grayscale image, where the shadows are disappeared (as shown below). The required parameter, bias, is camera dependent, so we only need to calibrate once for images captured with same camera settings. </p>
+
+<div align="center">
+    <div style="display:inline-block;">
+    <b>Before:</b>
+
+    <br/>
+    <img id="before_image" style="border:1px solid black;" />
+    </div>
+
+    <div style="display:inline-block;">
+    <br/>
+    <b>After:</b>
+
+    <br/>
+    <canvas id="after_image" style="border:1px solid black;">Your browser does not support the canvas tag.</canvas>
+    </div>
+</div>
+
+    <p>Try your own image <span id="filename"></span> or <button onclick="reset();">Reset</button>
+    </p>
+    <ol>
+      <li>
+        Click <button onclick="openFile(handleFiles);">upload</button> or drag and drop an image to this window.
+        <input id="fileinput" style="display:none;" type="file">
+      </li>
+      <li>
+        Choose Filter:
+        <b><a href="javascript:setFilter(grayscale);">grayscale</a></b>
+        |
+        <b><a href="javascript:biasInputRange.onchange();">shaffer</a>
+      <input id="biasInputRange" type="range" min="-1" max="1" step="0.01" onchange="setFilter(shaffer(this.value)); biasInputText.value = this.value" />
+      (bias = <input type="text" style="width:50px;" id="biasInputText" value="0" onchange="biasInputRange.value = this.value">)</b>
+      </li>
+    </ol>
+<!-- END Example -->
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/baidut/Shaffer">Shaffer</a> is maintained by <a href="https://github.com/baidut">baidut</a>.</span>
