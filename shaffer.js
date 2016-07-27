@@ -51,10 +51,32 @@ function update() {
   document.querySelector("#before_image").src = imageURL;
   var image = new Image();
   image.onload = function () {
+    // image resize
+    var MAX_WIDTH = 400;
+    var MAX_HEIGHT = 300;
+    var width = image.width;
+    var height = image.height;
+
+    if (width > height) {
+      if (width > MAX_WIDTH) {
+        height *= MAX_WIDTH / width;
+        width = MAX_WIDTH;
+      }
+    } else {
+      if (height > MAX_HEIGHT) {
+        width *= MAX_HEIGHT / height;
+        height = MAX_HEIGHT;
+      }
+    }
+    image.height = height;
+    image.width = width;
+    // image resize END
+
     if (image.width != canvas.width)
       canvas.width = image.width;
     if (image.height != canvas.height)
       canvas.height = image.height;
+
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
     filterCanvas(imageFilter);
