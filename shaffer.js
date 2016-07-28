@@ -123,7 +123,7 @@ function setFilter(f) {
 }
 
  // Reset to default image and filter
-function reset(imageFile = "./h49_2.png", bias = -0.07) {
+function reset(imageFile, bias) {
   imageURL = imageFile;
   imageFilter = shaffer(bias); //grayscale;
   input_bias.value = bias;
@@ -139,7 +139,7 @@ function onLoad() {
   registerDragAndDrop(document, handleFiles);
 
   // Reset to defaults loading a default image
-  reset();                
+  reset("./h49_2.png", -0.07);                
 }
 
  // Define helper function to register an object for drag and drop

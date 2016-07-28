@@ -50,7 +50,7 @@
     <ul>
       <li>
         Select an image:
-        <select onchange="reset(this.value);">
+        <select onchange="reset(this.value,-0.07);">
           <option value="h49-50_1-2.png">h49-50_1-2.png</option>
           <option value="h53_1-3.png">h53_1-3.png</option>
           <option value="h87-90_1.png">h87-90_1.png</option>
@@ -64,10 +64,11 @@
         <b><a href="javascript:input_bias.onchange();">shaffer</a>
       (<i>bias</i> = 
       <!-- note number type is not support yet in mobile browser-->
-      <input type="text" id="input_bias" style="width:60px;" step="0.01" onchange="setFilter(shaffer(this.value));" />
+      <input type="text" id="input_bias" style="width:60px;" onchange="setFilter(shaffer(this.value));" />
+      <!-- min="-2" max="2" step="0.01" -->
       <button onclick="input_bias.value = input_bias.value - 0.01;input_bias.onchange();">-</button>
       <button onclick="input_bias.value = input_bias.value - (-0.01);
-      input_bias.onchange();">+</button> <!-- min="-2" max="2" -->
+      input_bias.onchange();">+</button> 
       )</b>
       
       </li>
@@ -83,8 +84,8 @@
       </li>
       <li>
         Use uncompressed image (*.png) to get better results. Performance is poorer using compressed image (*.jpg) since the loss of color information, e.g. 
-        <button onclick="reset('h49_2.png');">h49_2.png</button>
-        <button onclick="reset('h49_2.jpg');">h49_2.jpg</button>.
+        <button onclick="reset('h49_2.png',-0.07);">h49_2.png</button>
+        <button onclick="reset('h49_2.jpg',-0.07);">h49_2.jpg</button>.
       </li>
 
     </ul>
