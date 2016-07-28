@@ -29,7 +29,7 @@
 
 
 <!-- Example -->
-<p>Shaffer takes a color image as input and outputs a grayscale image, where the shadows are disappeared (as shown below). The required parameter, input_bias, is camera dependent, so we only need to calibrate once for images captured with same camera settings. </p>
+<p>Shaffer takes a color image as input and outputs a grayscale image, where the shadows are disappeared (as shown below). The required parameter, <i>bias</i>, is camera dependent, so we only need to calibrate once for images captured with same camera settings. </p>
 
 <div align="center">
     <div style="display:inline-block;">
@@ -47,39 +47,47 @@
     <canvas id="after_image" style="max-width:100%; border:1px solid black;">Your browser does not support the canvas tag.</canvas>
     </div>
 </div>
-
-    <p>Try your own image <span id="filename"></span> or 
-      <select onchange="reset(this.value);">
-        <option value="h49-50_1-2.png">h49-50_1-2.png</option>
-        <option value="h53_1-3.png">h53_1-3.png</option>
-        <option value="h87-90_1.png">h87-90_1.png</option>
-      </select>
-    </p>
-    <ol>
+    <ul>
       <li>
-        Click <button onclick="openFile(handleFiles);">upload</button> or drag and drop an image to this window.
-        <input id="fileinput" style="display:none;" type="file">
+        Select an image:
+        <select onchange="reset(this.value);">
+          <option value="h49-50_1-2.png">h49-50_1-2.png</option>
+          <option value="h53_1-3.png">h53_1-3.png</option>
+          <option value="h87-90_1.png">h87-90_1.png</option>
+        </select>
+
       </li>
       <li>
         Choose Filter:
         <b><a href="javascript:setFilter(grayscale);">grayscale</a></b>
         |
         <b><a href="javascript:input_bias.onchange();">shaffer</a>
-      (input_bias = 
-      <input type="number" id="input_bias" style="width:60px;" step="0.01" onchange="setFilter(shaffer(this.value));">
+      (<i>bias</i> = 
+      <!-- note number type is not support yet in mobile browser-->
+      <input type="text" id="input_bias" style="width:60px;" step="0.01" onchange="setFilter(shaffer(this.value));" />
       <button onclick="input_bias.value = input_bias.value - 0.01;input_bias.onchange();">-</button>
       <button onclick="input_bias.value = input_bias.value - (-0.01);
       input_bias.onchange();">+</button> <!-- min="-2" max="2" -->
       )</b>
+      
       </li>
-    </ol>
-    <p>Bias may be different for different images, e.g. 
-    <button onclick="reset('h54-55_1-2.png',-0.01);">h54-55_1-2.png</button> 
-    <button onclick="reset('h64-65_1-3.png',-0.05);">h64-65_1-3.png</button>.
-    </p>
-    Use uncompressed image (*.png) to get better results. Performance is poorer using compressed image (*.jpg) since the loss of color information, e.g. 
-    <button onclick="reset('h49_2.png');">h49_2.png</button>
-    <button onclick="reset('h49_2.jpg');">h49_2.jpg</button>.
+      <li>
+        To try your own image: <span id="filename"></span>, just
+        Click <button onclick="openFile(handleFiles);">upload</button> or drag and drop an image to this window.
+        <input id="fileinput" style="display:none;" type="file">
+      </li>
+
+      <li><i>Bias</i> may be different for different images, e.g. 
+        <button onclick="reset('h54-55_1-2.png',-0.01);">h54-55_1-2.png</button> 
+        <button onclick="reset('h64-65_1-3.png',-0.05);">h64-65_1-3.png</button>.
+      </li>
+      <li>
+        Use uncompressed image (*.png) to get better results. Performance is poorer using compressed image (*.jpg) since the loss of color information, e.g. 
+        <button onclick="reset('h49_2.png');">h49_2.png</button>
+        <button onclick="reset('h49_2.jpg');">h49_2.jpg</button>.
+      </li>
+
+    </ul>
 <!-- END Example -->
 
 
